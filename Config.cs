@@ -18,5 +18,20 @@ namespace Monitor.Globals {
                 }
             }
         }
+
+        public static string ApplicationName {
+            get {
+                using StreamReader reader = new StreamReader("config.json");
+                try {
+                    var json = reader.ReadToEnd();
+                    JObject config = JObject.Parse(json);
+                    var obj = config!["general"]!["application_name"]!.ToString() ?? "OnlineMonitor";
+                    return obj;
+                } catch (Exception e) {
+                    Console.WriteLine(e);
+                    return "OnlineMonitor";
+                }
+            }
+        }
     }
 }

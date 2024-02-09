@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 
+using Monitor.Globals;
+using Monitor.Models;
+
 namespace OnlineMonitor.Controllers;
 
 [ApiController]
@@ -16,6 +19,12 @@ public class OnlineMonitorController : ControllerBase
     [HttpGet(Name = "CheckOnline")]
     public ActionResult Get()
     {
-        return Ok();
+        var BasicInfo = new BasicInfo {
+            Version = Config.Version,
+            ApplicationPort = Config.ApplicationPort,
+            ApplicationName = Config.ApplicationName
+        };
+
+        return Ok(BasicInfo);
     }
 }
