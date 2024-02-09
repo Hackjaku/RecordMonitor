@@ -1,0 +1,6 @@
+{
+    "general": {
+        "name": "check_online",
+        "application_port": 5555
+    }
+}
