@@ -1,3 +1,5 @@
+using Monitor.Globals;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -11,7 +13,7 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.Urls.Add("http://*:3000");
+app.Urls.Add($"http://*:{Config.ApplicationPort}");
 
 // // Configure the HTTP request pipeline.
 // if (app.Environment.IsDevelopment())
